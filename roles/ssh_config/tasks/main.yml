@@ -1,0 +1,50 @@
+- name: Disable root login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin\s+.*'
+    line: 'PermitRootLogin no'
+    state: present
+
+- name: Disable empty passwords
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitEmptyPasswords\s+.*'
+    line: 'PermitEmptyPasswords no'
+    state: present
+
+- name: Set logging to VERBOSE
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^LogLevel\s+.*'
+    line: 'LogLevel VERBOSE'
+    state: present
+
+- name: Disable X11Forwarding
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^X11Forwarding\s+.*'
+    line: 'X11Forwarding no'
+    state: present
+
+- name: Ensure PasswordAuthentication is enabled
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PasswordAuthentication\s+.*'
+    line: 'PasswordAuthentication yes'
+    state: present
+
+- name: Disable root password login explicitly
+  blockinfile:
+    path: /etc/ssh/sshd_config
+    block: |
+      Match User root
+          PasswordAuthentication no
+    insertafter: EOF
+    state: present
+
+- name: Restart SSH service locally
+  ansible.builtin.command: "/usr/bin/docker exec ansible-static-server-test_server-1 /usr/sbin/service ssh restart"
+  delegate_to: localhost
+  run_once: true
+  changed_when: false
+  failed_when: false

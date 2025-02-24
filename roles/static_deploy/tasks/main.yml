@@ -1,0 +1,5 @@
+- name: Copy static files
+  copy:
+    src: static/images/
+    dest: /var/www/images/
+    mode: '0644'

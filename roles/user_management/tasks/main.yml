@@ -1,0 +1,23 @@
+- name: Create custom groups
+  group:
+    name: "{{ item.name }}"
+    state: present
+  loop: "{{ custom_groups }}"
+
+- name: Manage users
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    state: "{{ item.state }}"
+    groups: "{{ item.groups | default([]) }}"
+    append: yes
+    password: "{{ item.password | default(omit) }}"
+  loop: "{{ users }}"
+
+- name: Add SSH keys for users
+  authorized_key:
+    user: "{{ item.name }}"
+    key: "{{ item.ssh_key }}"
+    state: present
+  when: item.ssh_key is defined
+  loop: "{{ users }}"

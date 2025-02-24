@@ -1,0 +1,12 @@
+- hosts: test_server
+  become: yes
+  vars_files:
+    - roles/user_management/vars/main.yml
+    - roles/system_setup/vars/main.yml
+  roles:
+    - user_management
+    - zsh_setup
+    - ssh_config
+    - system_setup
+    - nginx_setup
+    - static_deploy

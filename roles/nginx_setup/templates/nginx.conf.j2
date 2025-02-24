@@ -1,0 +1,23 @@
+server {
+    listen 80;
+    server_name localhost;
+
+    location /images/ {
+        alias /var/www/images/;
+        autoindex on;
+        expires 1h;
+        add_header Cache-Control "public";
+    }
+
+    location ~* \.(jpg|jpeg|png|gif)$ {
+        root /var/www/images;
+        expires 1h;
+        add_header Cache-Control "public";
+    }
+
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    gzip on;
+    gzip_types image/jpeg image/png image/gif;
+}

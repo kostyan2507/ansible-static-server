@@ -1,0 +1,11 @@
+custom_groups:
+  - name: developers
+  - name: admins
+
+users:
+  - name: user1
+    shell: /bin/bash
+    state: present
+    ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCux17uRv4Ei3cHjfpd5MelTjR71tpaJ1ksf6Tf2LpHbsA3+nITAi5AQJdMRKPY36f+iezRDq+4HxueW65dX0nIuEsJIlY/jnxPqCd2hzf4814wsSbTi7mcQml+co5FAp8ggz9EZBUbCsFxkRwcZShZ9F1/zYGRo168NwcM+B0C6ua/E5Ba+gSWP9Slyg5lJtEuLbdVsm67b1dvivccoloRTkNm6rPa5f/bTzavW/i8QdZhiT2nQhg7KuIV7DdmQLsfbPciKahQ1D7oZfo199sAxiQ462rhLLImm4gHsvl4O1/2ItaXXUi5vYQoHFzjYY90WSlgd62+s5veKon+AwAdRS/xKigxxtAu7TlxAo4OUEc1rLLPZaOXESYaKxbWThj4USExJSsE0zwr8iub1kwO3bJ6R0llgpPP7X9cGegpiie0fDsrtQF407/GEJB9mn6ckRKV5z8azy6lH0yhC52RARmcFmicBqGsBGThGTe0tI0nooIRKHIUthurk9d3eKfUdJM0/8acSxlxfY0CIxWqjU8UfvgkzvLQKkcY97YJxn+ctDanJl8MFxFwA62kr08jy4BYvY0gAtuDClg8h9UL5uF91MUO2Pa1K0o+0iVUzLVdR4mjv50DD81rBTUBZKujyB3O82R692nbiYFrjTe47SOIu5cxj9UEa3I4fMlhPQ== root@v291432.hosted-by-vdsina.com"
+    password: "$6$gDH7O55kGdqaZbpU$GImrFaBH7RiKF5F0Q0SUNRrX3cnPKKgvPIbOVOvLVIgS5/zhcKPz2jqIVLXfrlz1.1cxgmxGLfx4bdAUDGlFj1"
+    groups: [developers]
